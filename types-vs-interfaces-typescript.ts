@@ -23,11 +23,11 @@ const filip: Person ={
 interface VIPBMI extends Person {
     getBMI: (weight:number, height:number) => number;
 }
-const VIPFilip : VIPBMI = {
+const VIPMember : VIPBMI = {
     getBMI:(weight, height)=> weight / square(height),
     ...filip
 }
-console.log(VIPFilip.getBMI(VIPFilip.weight, VIPFilip.height));
+console.log(VIPMember.getBMI(VIPMember.weight, VIPMember.height));
 // TypeScript allows you to extend interfaces, which is useful for adding new properties or methods without modifying the original interface.
 // This is particularly useful in large codebases or when working with third-party libraries where you want to add custom functionality without altering the original definitions.
 // In contrast, types are more rigid and cannot be extended in the same way. If you need to add properties or methods, you would have to create a new type or use intersection types.

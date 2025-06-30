@@ -19,8 +19,8 @@ var __assign = (this && this.__assign) || function () {
         bodyType: "slim",
         age: 30
     };
-    var VIPFilip = __assign({ getBMI: function (weight, height) { return weight / square_1(height); } }, filip);
-    console.log(VIPFilip.getBMI(VIPFilip.weight, VIPFilip.height));
+    var VIPMember = __assign({ getBMI: function (weight, height) { return weight / square_1(height); } }, filip);
+    console.log(VIPMember.getBMI(VIPMember.weight, VIPMember.height));
     // TypeScript allows you to extend interfaces, which is useful for adding new properties or methods without modifying the original interface.
     // This is particularly useful in large codebases or when working with third-party libraries where you want to add custom functionality without altering the original definitions.
     // In contrast, types are more rigid and cannot be extended in the same way. If you need to add properties or methods, you would have to create a new type or use intersection types.
