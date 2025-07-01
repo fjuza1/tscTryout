@@ -1,10 +1,19 @@
 {type body = string;
+type description = string;
+interface AppDetails {
+    title: string;
+    description : description;
+};
+const APP: Readonly <AppDetails> = {
+    title: "Types vs Interfaces in TypeScript",
+    description: "This is a simple example of how to use TypeScript interfaces and types to define the shape of objects and functions, demonstrating the flexibility of interfaces in extending functionality."
+}
+//APP.title = "New Title"; // This will cause an error because APP is readonly
     type sqr = (a:number) => number;
 interface sqr2 {
     a:number
 }
 const square :sqr = (a) =>a*a
-console.log(square(5))
 interface Person {
         bodyType?:string;
         height:number;
@@ -23,7 +32,7 @@ let filip: Person ={
 }
 interface VIPBMI extends Person {
     getBMI: (weight:number, height:number) => number;
-    getBodyType: (bmi: ReturnType <VIPBMI["getBMI"]>) => string ;
+    getBodyType: (bmi: ReturnType <VIPBMI["getBMI"]>) => body ;
 }
 const VIPMember : VIPBMI = {
     getBMI:(weight, height)=> weight / square(height),

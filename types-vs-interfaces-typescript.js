@@ -10,12 +10,16 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 {
+    ;
+    var APP = {
+        title: "Types vs Interfaces in TypeScript",
+        description: "This is a simple example of how to use TypeScript interfaces and types to define the shape of objects and functions, demonstrating the flexibility of interfaces in extending functionality."
+    };
     var square_1 = function (a) { return a * a; };
-    console.log(square_1(5));
     ;
     var filip = {
         height: 177 / 100,
-        weight: 100,
+        weight: 57,
         bodyType: "slim",
         age: 25
     };
