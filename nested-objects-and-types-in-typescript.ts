@@ -17,7 +17,7 @@ interface PravnickaOsoba {
     //Adresa?: Adresa
 }
 
-const pracovnik1: PravnickaOsoba = {
+let pracovnik1: PravnickaOsoba = {
     Meno: "Jana",
     Priezvisko: "Novakova",
     DatumNarodenia: new Date("1998-05-15"),
@@ -33,4 +33,12 @@ const pracovnik1: PravnickaOsoba = {
     }
 };
 console.log(pracovnik1);
+pracovnik1 = {
+    ...pracovnik1,
+    Adresa: {
+        ...pracovnik1.Adresa,
+        PSC: "81102" // Update the PSC field
+    }
+}
+console.log(pracovnik1)
 }
