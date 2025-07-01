@@ -1,3 +1,4 @@
+{
 interface Adresa {
     Ulica:string,
     Cislo:number,
@@ -31,3 +32,4 @@ const pracovnik1: PravnickaOsoba = {
     }
 };
 console.log(pracovnik1);
+}
