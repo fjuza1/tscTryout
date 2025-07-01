@@ -1,11 +1,12 @@
-{type sqr = (a:number) => number;
+{type body = string;
+    type sqr = (a:number) => number;
 interface sqr2 {
     a:number
 }
 const square :sqr = (a) =>a*a
 console.log(square(5))
 interface Person {
-        bodyType:string;
+        bodyType?:string;
         height:number;
 }
 interface Person {
@@ -14,20 +15,30 @@ interface Person {
 interface Person {
     weight:number;
 };
-const filip: Person ={
-    height: 185/100,
-    weight: 65,
+let filip: Person ={
+    height: 177/100,
+    weight: 57,
     bodyType: "slim",
-    age: 18
+    age: 25
 }
 interface VIPBMI extends Person {
     getBMI: (weight:number, height:number) => number;
+    getBodyType: (bmi: ReturnType <VIPBMI["getBMI"]>) => string ;
 }
 const VIPMember : VIPBMI = {
     getBMI:(weight, height)=> weight / square(height),
+    getBodyType: (bmi) => {if (bmi < 18.5) return "Underweight";
+    if (bmi < 25) return "Normal";
+    if (bmi < 30) return "Overweight";
+    return "Obese";
+  },
     ...filip
 }
-console.log(VIPMember.getBMI(VIPMember.weight, VIPMember.height));
+filip = {
+    ...filip,
+    bodyType: VIPMember.getBodyType(VIPMember.getBMI(VIPMember.weight, VIPMember.height))
+}
+console.log('updatedFilip',filip)
 type MEMBERS =[{name:string, age:number, position:string}];
 /*
 const members: MEMBERS = [{name: "Filip", age: 30, position: "Developer"}, {name: "Jana", age: 28, position: "Designer"}, {name: "Michal", age: 32, position: "Manager"}, {name: "Petr", age: 29, position: "Tester"}];
