@@ -28,3 +28,4 @@ function getDayInMonth(year = new Date().getFullYear(), month) {
 }
 console.log(getDayInMonth(2020,2)); // 29
 console.log(getDayInMonth(2021,2)); // 28 (non-leap year)
+console.log(getDayInMonth(2025,12));

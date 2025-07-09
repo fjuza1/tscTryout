@@ -22,12 +22,14 @@ let names: string[] = ["Bob", "Carol"];
 let person: [string, number] = ["Dave", 30];
 
 // 4. Enums
-enum Color {
-    Red,
-    Green,
-    Blue,
+enum appColor {
+    Red = 'rgba(255,0,0,1)',
+    Green = 'rgba(0,255,0,1)',
+    Blue = 'rgba(0,0,255,1)',
+    Violet = 'rgba(238,130,238,1)'
 }
-let c: Color = Color.Green;
+let c: appColor = appColor.Green;
+console.log(c)
 
 // 5. Functions
 function add(a: number, b: number): number {
@@ -86,3 +88,4 @@ let n: null = null;
 function error(message: string): never {
     throw new Error(message);
 }
+type Size = "xs" | "s" | "m" | "l" | "xl"; "xxl";"xxxl"
