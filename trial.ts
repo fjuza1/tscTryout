@@ -13,7 +13,19 @@ let unknownValue: unknown = "Can be anything but safer than 'any'"; // 'unknown'
 if (typeof unknownValue === "string") { 
     console.log(unknownValue.toUpperCase()); // Safe to use as a string
 }
-
+// * readonly type and omit example for improved TypeScript understanding
+// readonly type
+type readCarBrands = {
+    readonly brand: string,
+    readonly model: string,
+    readonly year: number
+}
+// omits
+type removeYear = Omit<readCarBrands, 'year'>; // omitting year property
+const car: removeYear = {
+    brand: "Toyota", model: "Corolla" // 'year' property is omitted and cannot be set, causes error if attempted year: 2020
+}
+console.log(car.brand, car.model); // Output: Toyota Corolla
 // 2. Arrays
 let numbers: number[] = [1, 2, 3];
 let names: string[] = ["Bob", "Carol"];
@@ -80,6 +92,7 @@ enum appColor{
 }
 let c: appColor = appColor.Green;
 console.log(c)
+
 
 // 5. Functions
 function add(a: number, b: number): number {
