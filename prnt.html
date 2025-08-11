@@ -1,0 +1,56 @@
+With(
+    {
+        ds: SortByColumns(
+               LocalDovolenky;
+               "field_1"; SortOrder.Ascending; "field_2"; SortOrder.Ascending
+            );
+        pageSize: 25   // rows per printed page
+    };
+    With(
+        {
+            rowsHtml:
+                Concat(
+                    Sequence(CountRows(ds));
+                    With(
+                        { rec: Last(FirstN(ds; Value)) };
+                        "<tr>" &
+                          "<td>" & Text(rec.'Dátum od'; "[$-sk]dd.MM.yyyy") & "</td>" &
+                          "<td>" & Coalesce(rec.Priezvisko; "") & "</td>" &
+                          "<td>" & Coalesce(rec.Meno; "") & "</td>" &
+                          "<td>" & Text(rec.'Počet hodín'; "0.##") & "</td>" &
+                        "</tr>" &
+                        If(Mod(Value; pageSize)=0; "<tr class='pb'></tr>"; "")
+                    )
+                )
+        };
+        "
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<style>
+  @page { size: A4 portrait; margin: 10mm; }
+  body { font-family: Arial; sans-serif; font-size: 11pt; }
+  table { width: 100%; border-collapse: collapse; }
+  th; td { border: 1px solid #2f4f4f; padding: 6px; text-align: left; }
+  thead th { background: #e9eff3; position: sticky; top: 0; }
+  tr { page-break-inside: avoid; }
+  .pb { page-break-after: always; }
+</style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Dátum od</th>
+        <th>Priezvisko</th>
+        <th>Meno</th>
+        <th>Počet hodín</th>
+      </tr>
+    </thead>
+    <tbody>" & rowsHtml & "</tbody>
+  </table>
+</body>
+</html>"
+    )
+)
